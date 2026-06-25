@@ -20,6 +20,7 @@ import { PolaroidImageCard } from "@/components/PolaroidImageCard";
 import { BlogCard } from "@/components/BlogCard";
 import { ContactCard } from "@/components/ContactCard";
 import { ShopImage } from "@/components/ShopImage";
+import { GoogleReviews } from "@/components/GoogleReviews";
 import { getFeaturedServices } from "@/data/services";
 import { getLatestPosts } from "@/data/blogPosts";
 import { restorationExamples, framingShowcase } from "@/data/gallery";
@@ -182,6 +183,9 @@ export default function HomePage() {
           </ul>
         </div>
       </section>
+
+      {/* ---------- 6. GOOGLE REVIEWS ---------- */}
+      <GoogleReviews />
 
       {/* ---------- 6. BEFORE / AFTER RESTORATION ---------- */}
       <section className="surface-paper py-20 sm:py-24">

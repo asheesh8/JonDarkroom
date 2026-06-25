@@ -123,18 +123,21 @@ export default function AdminLoginPage() {
           <p className="mt-1 text-xs uppercase tracking-[0.3em] text-brass">
             Admin Sign In
           </p>
+          <p className="mx-auto mt-3 max-w-xs text-sm leading-relaxed text-cream/55">
+            Use <span className="font-semibold text-brass">JON</span> for the
+            username and password unless production env vars override it.
+          </p>
         </div>
 
-        <div className="rounded-xl border border-brass/20 bg-[#241810]/70 p-6 shadow-counter sm:p-7">
+        <div className="rounded-2xl border border-brass/25 bg-[#241810]/80 p-6 shadow-counter sm:p-7">
           <Suspense fallback={<div className="text-cream/60">Loading…</div>}>
             <LoginForm />
           </Suspense>
         </div>
 
         <p className="mt-6 text-center text-xs text-cream/40">
-          Credentials are set with <code className="text-cream/60">ADMIN_USERNAME</code>{" "}
-          and <code className="text-cream/60">ADMIN_PASSWORD</code> in{" "}
-          <code className="text-cream/60">.env.local</code>.
+          Production can still use <code className="text-cream/60">ADMIN_USERNAME</code>{" "}
+          and <code className="text-cream/60">ADMIN_PASSWORD</code> in Vercel.
         </p>
         <p className="mt-3 text-center">
           <Link href="/" className="text-xs text-brass hover:underline">
