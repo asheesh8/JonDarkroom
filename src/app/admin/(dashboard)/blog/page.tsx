@@ -34,7 +34,7 @@ export default function AdminBlogPage() {
         action={
           <Link
             href="/admin/blog/new"
-            className="btn-reset rounded-md bg-gradient-to-b from-brass-light to-brass-dark px-4 py-2.5 text-sm font-medium text-espresso shadow-brass"
+            className="btn-reset rounded-xl bg-gradient-to-b from-brass-light to-brass-dark px-4 py-2.5 text-sm font-medium text-espresso shadow-brass"
           >
             <PlusSquare className="h-4 w-4" aria-hidden="true" />
             New story
@@ -79,7 +79,7 @@ export default function AdminBlogPage() {
                 <button
                   onClick={() => toggleDraft(post.slug)}
                   title={post.draft ? "Publish" : "Unpublish"}
-                  className="grid h-9 w-9 place-items-center rounded-md border border-brass/25 text-cream/70 hover:border-brass hover:text-brass"
+                  className="grid h-9 w-9 place-items-center rounded-xl border border-brass/25 text-cream/70 hover:border-brass hover:text-brass"
                 >
                   {post.draft ? (
                     <Eye className="h-4 w-4" />
@@ -91,14 +91,14 @@ export default function AdminBlogPage() {
                   href={`/stories/${post.slug}`}
                   target="_blank"
                   title="Preview"
-                  className="grid h-9 w-9 place-items-center rounded-md border border-brass/25 text-cream/70 hover:border-brass hover:text-brass"
+                  className="grid h-9 w-9 place-items-center rounded-xl border border-brass/25 text-cream/70 hover:border-brass hover:text-brass"
                 >
                   <Pencil className="h-4 w-4" />
                 </Link>
                 <button
                   onClick={() => remove(post.slug)}
                   title="Delete"
-                  className="grid h-9 w-9 place-items-center rounded-md border border-burgundy/40 text-burgundy hover:bg-burgundy/10"
+                  className="grid h-9 w-9 place-items-center rounded-xl border border-burgundy/40 text-burgundy hover:bg-burgundy/10"
                 >
                   <Trash2 className="h-4 w-4" />
                 </button>

@@ -67,7 +67,7 @@ export default function PressPage() {
                 {featuredArticle.pages.map((pg, i) => (
                   <figure
                     key={i}
-                    className="overflow-hidden rounded-lg border border-brass/30 bg-white p-1.5 shadow-counter"
+                    className="overflow-hidden rounded-2xl border border-brass/30 bg-white p-1.5 shadow-counter"
                   >
                     <div className="aspect-[3/4]">
                       <ShopImage src={pg.src} alt={pg.alt} variant="newspaper" />
@@ -94,7 +94,7 @@ export default function PressPage() {
             {shopTimeline.map((entry) => (
               <li
                 key={entry.year}
-                className="rounded-lg border border-brass/25 bg-[#241810]/60 p-6"
+                className="rounded-2xl border border-brass/25 bg-[#241810]/60 p-6"
               >
                 <p className="font-serif text-3xl text-brass-light">
                   {entry.year}

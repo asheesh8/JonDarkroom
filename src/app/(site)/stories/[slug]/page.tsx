@@ -87,7 +87,7 @@ export default function StoryPage({
       {/* cover */}
       <div className="surface-wood-dark">
         <div className="shell max-w-4xl py-10">
-          <div className="overflow-hidden rounded-lg border border-brass/25 shadow-counter">
+          <div className="overflow-hidden rounded-3xl border border-brass/25 shadow-counter">
             <div className="aspect-[16/9]">
               <ShopImage src={post.cover} alt={post.coverAlt} />
             </div>
@@ -118,7 +118,7 @@ export default function StoryPage({
             )}
           </div>
 
-          <div className="mt-12 rounded-lg border border-walnut/20 bg-cream-dark/50 p-6 text-center">
+          <div className="mt-12 rounded-3xl border border-walnut/20 bg-cream-dark/50 p-6 text-center">
             <p className="font-serif text-xl text-espresso">
               Have a project like this?
             </p>

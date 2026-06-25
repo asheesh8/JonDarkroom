@@ -118,7 +118,7 @@ export default function HomePage() {
             {/* "all services" plaque-style link as last cell */}
             <Link
               href="/services"
-              className="group flex min-h-[180px] flex-col items-center justify-center rounded-md border-2 border-dashed border-walnut/40 p-6 text-center transition hover:border-burgundy hover:bg-burgundy/5"
+              className="group flex min-h-[180px] flex-col items-center justify-center rounded-3xl border-2 border-dashed border-walnut/40 p-6 text-center transition hover:border-burgundy hover:bg-burgundy/5"
             >
               <span className="font-serif text-xl text-espresso">
                 See all services
@@ -166,9 +166,9 @@ export default function HomePage() {
             ].map((item) => (
               <li
                 key={item.title}
-                className="rounded-lg border border-brass/25 bg-[#241810]/60 p-6"
+                className="rounded-2xl border border-brass/25 bg-[#241810]/60 p-6"
               >
-                <span className="grid h-11 w-11 place-items-center rounded-md border border-brass/40 bg-espresso text-brass">
+                <span className="grid h-11 w-11 place-items-center rounded-2xl border border-brass/40 bg-espresso text-brass">
                   <item.icon className="h-5 w-5" aria-hidden="true" />
                 </span>
                 <h3 className="mt-4 font-serif text-lg text-cream">
@@ -330,7 +330,7 @@ export default function HomePage() {
           />
           <div className="mt-12 grid gap-8 lg:grid-cols-2">
             <ContactCard />
-            <div className="overflow-hidden rounded-lg border border-brass/30 shadow-counter">
+            <div className="overflow-hidden rounded-3xl border border-brass/30 shadow-counter">
               <iframe
                 title={`Map to ${businessInfo.name}`}
                 src={mapEmbedUrl}

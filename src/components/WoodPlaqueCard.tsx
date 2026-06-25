@@ -15,12 +15,12 @@ export function WoodPlaqueCard({
   as?: "div" | "article" | "li";
 }) {
   return (
-    <Tag className={cn("plaque relative grain overflow-hidden p-6 sm:p-7", className)}>
+    <Tag className={cn("plaque relative grain overflow-hidden p-7 sm:p-8", className)}>
       {/* corner screws */}
-      <span className="plaque-screw left-2.5 top-2.5" aria-hidden="true" />
-      <span className="plaque-screw right-2.5 top-2.5" aria-hidden="true" />
-      <span className="plaque-screw bottom-2.5 left-2.5" aria-hidden="true" />
-      <span className="plaque-screw bottom-2.5 right-2.5" aria-hidden="true" />
+      <span className="plaque-screw left-4 top-4" aria-hidden="true" />
+      <span className="plaque-screw right-4 top-4" aria-hidden="true" />
+      <span className="plaque-screw bottom-4 left-4" aria-hidden="true" />
+      <span className="plaque-screw bottom-4 right-4" aria-hidden="true" />
       <div className="relative z-10">{children}</div>
     </Tag>
   );

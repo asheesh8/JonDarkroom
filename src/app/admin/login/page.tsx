@@ -42,7 +42,7 @@ function LoginForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
       {error && (
-        <div className="flex items-center gap-2 rounded-md border border-burgundy/50 bg-burgundy/15 px-4 py-3 text-sm text-cream">
+        <div className="flex items-center gap-2 rounded-xl border border-burgundy/50 bg-burgundy/15 px-4 py-3 text-sm text-cream">
           <AlertCircle className="h-4 w-4 shrink-0 text-burgundy" aria-hidden="true" />
           {error}
         </div>
@@ -67,7 +67,7 @@ function LoginForm() {
             required
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            className="w-full rounded-md border border-brass/25 bg-espresso/60 py-2.5 pl-10 pr-3.5 text-sm text-cream focus:border-brass focus:outline-none focus:ring-1 focus:ring-brass"
+            className="w-full rounded-xl border border-brass/25 bg-espresso/60 py-2.5 pl-10 pr-3.5 text-sm text-cream focus:border-brass focus:outline-none focus:ring-1 focus:ring-brass"
           />
         </div>
       </div>
@@ -92,7 +92,7 @@ function LoginForm() {
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full rounded-md border border-brass/25 bg-espresso/60 py-2.5 pl-10 pr-3.5 text-sm text-cream focus:border-brass focus:outline-none focus:ring-1 focus:ring-brass"
+            className="w-full rounded-xl border border-brass/25 bg-espresso/60 py-2.5 pl-10 pr-3.5 text-sm text-cream focus:border-brass focus:outline-none focus:ring-1 focus:ring-brass"
           />
         </div>
       </div>
@@ -100,7 +100,7 @@ function LoginForm() {
       <button
         type="submit"
         disabled={loading}
-        className="btn-reset w-full rounded-md bg-gradient-to-b from-brass-light to-brass-dark px-5 py-3 text-sm font-medium text-espresso shadow-brass transition hover:-translate-y-0.5 disabled:opacity-60"
+        className="btn-reset w-full rounded-xl bg-gradient-to-b from-brass-light to-brass-dark px-5 py-3 text-sm font-medium text-espresso shadow-brass transition hover:-translate-y-0.5 disabled:opacity-60"
       >
         {loading ? "Signing in…" : "Sign in"}
       </button>

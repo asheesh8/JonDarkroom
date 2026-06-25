@@ -77,7 +77,7 @@ export function MemoryDesk() {
   return (
     <div className="relative">
       {/* the desk surface */}
-      <div className="surface-wood grain relative overflow-hidden rounded-xl border border-brass/30 p-5 shadow-counter sm:p-8">
+      <div className="surface-wood grain relative overflow-hidden rounded-[2.5rem] border border-brass/30 p-5 shadow-counter sm:p-8">
         {/* warm lamp glow from the top-left, like a desk lamp */}
         <div
           className="pointer-events-none absolute -left-10 -top-16 h-72 w-72 rounded-full bg-brass/20 blur-3xl"
@@ -85,7 +85,7 @@ export function MemoryDesk() {
         />
         {/* engraved brass nameplate */}
         <div className="relative z-10 mb-6 flex items-center justify-center">
-          <span className="rounded border border-brass/40 bg-espresso/60 px-4 py-1.5 text-[0.65rem] uppercase tracking-[0.35em] text-brass shadow-brass">
+          <span className="rounded-full border border-brass/40 bg-espresso/60 px-4 py-1.5 text-[0.65rem] uppercase tracking-[0.35em] text-brass shadow-brass">
             Jon&apos;s Workbench
           </span>
         </div>

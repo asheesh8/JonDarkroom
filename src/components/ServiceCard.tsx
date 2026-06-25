@@ -7,7 +7,7 @@ import type { Service } from "@/data/services";
 export function ServiceCard({ service }: { service: Service }) {
   return (
     <WoodPlaqueCard as="article" className="flex h-full flex-col">
-      <div className="mb-4 grid h-12 w-12 place-items-center rounded-md border border-brass/40 bg-espresso/60 text-brass shadow-brass">
+      <div className="mb-4 grid h-12 w-12 place-items-center rounded-2xl border border-brass/40 bg-espresso/60 text-brass shadow-brass">
         <ServiceIcon name={service.icon} className="h-6 w-6" />
       </div>
 

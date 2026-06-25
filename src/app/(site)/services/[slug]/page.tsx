@@ -77,7 +77,7 @@ export default function ServiceDetailPage({
       {/* real reference photo band */}
       <section className="surface-wood-dark py-10">
         <div className="shell">
-          <div className="mx-auto max-w-4xl overflow-hidden rounded-lg border border-brass/30 shadow-counter">
+          <div className="mx-auto max-w-4xl overflow-hidden rounded-3xl border border-brass/30 shadow-counter">
             <div className="aspect-[16/8]">
               <ShopImage
                 src={service.image}
@@ -114,7 +114,7 @@ export default function ServiceDetailPage({
           <aside className="lg:col-span-1">
             <div className="sticky top-24 space-y-6">
               <div className="card-paper p-6">
-                <div className="mb-4 grid h-12 w-12 place-items-center rounded-md border border-walnut/30 bg-cream-dark text-burgundy">
+                <div className="mb-4 grid h-12 w-12 place-items-center rounded-2xl border border-walnut/30 bg-cream-dark text-burgundy">
                   <ServiceIcon name={service.icon} className="h-6 w-6" />
                 </div>
                 <h3 className="font-serif text-xl text-espresso">
@@ -226,9 +226,9 @@ export default function ServiceDetailPage({
               <Link
                 key={s.slug}
                 href={`/services/${s.slug}`}
-                className="group flex items-center gap-3 rounded-lg border border-walnut/20 bg-cream-dark/40 p-4 transition hover:border-burgundy hover:bg-cream-dark"
+                className="group flex items-center gap-3 rounded-2xl border border-walnut/20 bg-cream-dark/40 p-4 transition hover:border-burgundy hover:bg-cream-dark"
               >
-                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-md border border-walnut/30 text-burgundy">
+                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl border border-walnut/30 text-burgundy">
                   <ServiceIcon name={s.icon} className="h-5 w-5" />
                 </span>
                 <span className="font-serif text-lg text-espresso">

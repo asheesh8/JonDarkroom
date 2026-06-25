@@ -108,7 +108,7 @@ export default function NewStoryPage() {
                 label="Cover image"
                 hint="TODO: image uploads land in Supabase Storage. For now, paste a path under /jons-assets."
               >
-                <label className="flex cursor-pointer flex-col items-center justify-center gap-2 rounded-md border border-dashed border-brass/40 bg-espresso/40 px-4 py-8 text-center text-sm text-cream/55 transition hover:border-brass">
+                <label className="flex cursor-pointer flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-brass/40 bg-espresso/40 px-4 py-8 text-center text-sm text-cream/55 transition hover:border-brass">
                   <ImagePlus className="h-6 w-6 text-brass" aria-hidden="true" />
                   Click to upload (mock)
                   <input type="file" name="cover" accept="image/*" className="hidden" />

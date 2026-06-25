@@ -54,7 +54,7 @@ export default function AdminServicesPage() {
         {services.map((s) => (
           <Card key={s.slug}>
             <div className="mb-4 flex items-center gap-3">
-              <span className="grid h-10 w-10 place-items-center rounded-md border border-brass/30 text-brass">
+              <span className="grid h-10 w-10 place-items-center rounded-xl border border-brass/30 text-brass">
                 <ServiceIcon name={s.icon} className="h-5 w-5" />
               </span>
               <div>
@@ -109,7 +109,7 @@ export default function AdminServicesPage() {
               <button
                 type="button"
                 onClick={() => save(s.slug)}
-                className="btn-reset rounded-md border border-brass/40 px-4 py-2 text-sm text-cream hover:bg-brass/10"
+                className="btn-reset rounded-xl border border-brass/40 px-4 py-2 text-sm text-cream hover:bg-brass/10"
               >
                 Save {s.title}
               </button>

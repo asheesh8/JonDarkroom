@@ -88,7 +88,7 @@ export function AdminSidebar() {
                 href={item.href}
                 onClick={() => setOpen(false)}
                 className={cn(
-                  "flex items-center gap-3 rounded-md px-3 py-2.5 text-sm transition",
+                  "flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm transition",
                   isActive(item.href, item.exact)
                     ? "bg-brass/15 text-brass"
                     : "text-cream/70 hover:bg-white/5 hover:text-cream",
@@ -104,14 +104,14 @@ export function AdminSidebar() {
             <Link
               href="/"
               target="_blank"
-              className="flex items-center gap-3 rounded-md px-3 py-2.5 text-sm text-cream/70 transition hover:bg-white/5 hover:text-cream"
+              className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-cream/70 transition hover:bg-white/5 hover:text-cream"
             >
               <ExternalLink className="h-4 w-4" aria-hidden="true" />
               View live site
             </Link>
             <button
               onClick={logout}
-              className="flex w-full items-center gap-3 rounded-md px-3 py-2.5 text-sm text-burgundy transition hover:bg-burgundy/10"
+              className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-burgundy transition hover:bg-burgundy/10"
             >
               <LogOut className="h-4 w-4" aria-hidden="true" />
               Sign out

@@ -34,13 +34,13 @@ export default function AdminGalleryPage() {
       />
       <MockNotice />
 
-      <div className="mb-6 inline-flex rounded-lg border border-brass/25 bg-espresso/50 p-1">
+      <div className="mb-6 inline-flex rounded-2xl border border-brass/25 bg-espresso/50 p-1">
         {(["inventory", "gallery"] as Tab[]).map((t) => (
           <button
             key={t}
             onClick={() => setTab(t)}
             className={cn(
-              "rounded-md px-4 py-2 text-sm capitalize transition",
+              "rounded-xl px-4 py-2 text-sm capitalize transition",
               tab === t
                 ? "bg-brass/20 text-brass"
                 : "text-cream/60 hover:text-cream",
@@ -202,7 +202,7 @@ function InventoryManager() {
             label="Item photo"
             hint="TODO: uploads go to Supabase Storage. For now paste a path under /jons-assets."
           >
-            <label className="flex cursor-pointer items-center justify-center gap-2 rounded-md border border-dashed border-brass/40 bg-espresso/40 px-4 py-5 text-center text-sm text-cream/55 transition hover:border-brass">
+            <label className="flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-dashed border-brass/40 bg-espresso/40 px-4 py-5 text-center text-sm text-cream/55 transition hover:border-brass">
               <ImagePlus className="h-5 w-5 text-brass" aria-hidden="true" />
               Upload photo (mock)
               <input type="file" accept="image/*" className="hidden" />
@@ -220,7 +220,7 @@ function InventoryManager() {
               type="button"
               onClick={saveItem}
               disabled={!editing.name}
-              className="btn-reset rounded-md bg-gradient-to-b from-brass-light to-brass-dark px-5 py-2.5 text-sm font-medium text-espresso shadow-brass disabled:opacity-50"
+              className="btn-reset rounded-xl bg-gradient-to-b from-brass-light to-brass-dark px-5 py-2.5 text-sm font-medium text-espresso shadow-brass disabled:opacity-50"
             >
               <Plus className="h-4 w-4" aria-hidden="true" />
               Save item
@@ -293,7 +293,7 @@ function PreviewCard({
     sold: "bg-charcoal/80 text-cream/70 border-cream/20",
   };
   return (
-    <div className="overflow-hidden rounded-lg border border-brass/30 bg-[#241810] shadow-counter">
+    <div className="overflow-hidden rounded-2xl border border-brass/30 bg-[#241810] shadow-counter">
       <div
         aria-hidden="true"
         className="h-2 w-full bg-brass"
@@ -374,7 +374,7 @@ function GalleryManager() {
           label="Add a gallery image"
           hint="TODO: uploads go to Supabase Storage. These show as polaroids on the homepage and showcase sections."
         >
-          <label className="flex cursor-pointer flex-col items-center justify-center gap-2 rounded-md border border-dashed border-brass/40 bg-espresso/40 px-4 py-10 text-center text-sm text-cream/55 transition hover:border-brass">
+          <label className="flex cursor-pointer flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-brass/40 bg-espresso/40 px-4 py-10 text-center text-sm text-cream/55 transition hover:border-brass">
             <ImagePlus className="h-6 w-6 text-brass" aria-hidden="true" />
             Upload image (mock)
             <input type="file" accept="image/*" className="hidden" />
@@ -386,7 +386,7 @@ function GalleryManager() {
         {images.map((img) => (
           <div
             key={img.id}
-            className="group relative overflow-hidden rounded-md border border-brass/20 bg-[#241810]"
+            className="group relative overflow-hidden rounded-xl border border-brass/20 bg-[#241810]"
           >
             <div className="aspect-square">
               <ShopImage src={img.src} alt={img.alt} />

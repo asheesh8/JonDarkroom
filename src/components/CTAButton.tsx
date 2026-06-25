@@ -6,7 +6,7 @@ type Variant = "primary" | "brass" | "ghost" | "paper";
 type Size = "sm" | "md" | "lg";
 
 const base =
-  "btn-reset rounded-md font-medium tracking-wide transition-all duration-200 focus-visible:outline-brass disabled:opacity-50 disabled:pointer-events-none";
+  "btn-reset rounded-full font-medium tracking-wide transition-all duration-200 focus-visible:outline-brass disabled:opacity-50 disabled:pointer-events-none";
 
 const variants: Record<Variant, string> = {
   // burgundy stamp

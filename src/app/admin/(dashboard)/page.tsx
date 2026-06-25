@@ -53,7 +53,7 @@ export default function AdminDashboard() {
             className="group rounded-xl border border-brass/20 bg-[#241810]/70 p-5 transition hover:border-brass/50"
           >
             <div className="flex items-center justify-between">
-              <span className="grid h-10 w-10 place-items-center rounded-md border border-brass/30 text-brass">
+              <span className="grid h-10 w-10 place-items-center rounded-xl border border-brass/30 text-brass">
                 <s.icon className="h-5 w-5" aria-hidden="true" />
               </span>
               <ArrowRight className="h-4 w-4 text-cream/30 transition group-hover:translate-x-1 group-hover:text-brass" aria-hidden="true" />
@@ -73,7 +73,7 @@ export default function AdminDashboard() {
             href={q.href}
             className="group flex items-start gap-4 rounded-xl border border-brass/20 bg-[#241810]/70 p-5 transition hover:border-brass/50"
           >
-            <span className="grid h-11 w-11 shrink-0 place-items-center rounded-md border border-brass/30 bg-espresso text-brass">
+            <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-brass/30 bg-espresso text-brass">
               <q.icon className="h-5 w-5" aria-hidden="true" />
             </span>
             <span>

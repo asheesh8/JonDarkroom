@@ -71,7 +71,7 @@ export function Navbar() {
         {/* Call CTA (desktop) */}
         <a
           href={`tel:${businessInfo.phoneHref}`}
-          className="btn-reset hidden rounded-md border border-brass/50 px-4 py-2 text-sm text-cream hover:bg-brass/10 lg:inline-flex"
+          className="btn-reset hidden rounded-full border border-brass/50 px-5 py-2 text-sm text-cream hover:bg-brass/10 lg:inline-flex"
         >
           <Phone className="h-4 w-4 text-brass" aria-hidden="true" />
           {businessInfo.phoneDisplay}
@@ -83,7 +83,7 @@ export function Navbar() {
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="grid h-10 w-10 place-items-center rounded-md border border-brass/40 text-cream lg:hidden"
+          className="grid h-10 w-10 place-items-center rounded-2xl border border-brass/40 text-cream lg:hidden"
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
@@ -112,7 +112,7 @@ export function Navbar() {
             <li className="mt-2 px-3">
               <a
                 href={`tel:${businessInfo.phoneHref}`}
-                className="btn-reset w-full rounded-md bg-gradient-to-b from-brass-light to-brass-dark px-4 py-3 text-sm font-medium text-espresso"
+                className="btn-reset w-full rounded-full bg-gradient-to-b from-brass-light to-brass-dark px-4 py-3 text-sm font-medium text-espresso"
               >
                 <Phone className="h-4 w-4" aria-hidden="true" />
                 Call {businessInfo.phoneDisplay}
