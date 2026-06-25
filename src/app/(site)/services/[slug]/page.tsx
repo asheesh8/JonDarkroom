@@ -6,13 +6,14 @@ import { PageHero } from "@/components/PageHero";
 import { CTAButton } from "@/components/CTAButton";
 import { FilmStripDivider } from "@/components/FilmStripDivider";
 import { ServiceIcon } from "@/components/icons";
-import { InventoryShowcase } from "@/components/InventoryShowcase";
 import { PolaroidImageCard } from "@/components/PolaroidImageCard";
 import { ContactCard } from "@/components/ContactCard";
 import { ShopImage } from "@/components/ShopImage";
 import { services, getService, allServiceSlugs } from "@/data/services";
 import { restorationExamples } from "@/data/gallery";
+import { shopItems, TOTAL_ITEMS } from "@/data/shop";
 import { businessInfo } from "@/data/businessInfo";
+import { formatPrice } from "@/lib/utils";
 
 export function generateStaticParams() {
   return allServiceSlugs.map((slug) => ({ slug }));
@@ -41,6 +42,7 @@ export default function ServiceDetailPage({
   if (!service) notFound();
 
   const others = services.filter((s) => s.slug !== service.slug).slice(0, 3);
+  const shopPreview = shopItems.filter((i) => i.image && i.price).slice(0, 4);
 
   return (
     <>
@@ -146,17 +148,53 @@ export default function ServiceDetailPage({
       {service.slug === "camera-equipment" && (
         <section className="surface-wood py-16 sm:py-20">
           <div className="shell">
-            <p className="eyebrow text-brass">From the display case</p>
-            <h2 className="mt-2 font-serif text-3xl text-cream sm:text-4xl">
-              In the shop right now
-            </h2>
-            <p className="mt-3 max-w-2xl text-cream/70">
-              A rotating selection of film and digital gear. Tap any item for
-              details, condition, and price — then call to confirm it&apos;s
-              still on the shelf.
-            </p>
-            <div className="mt-10">
-              <InventoryShowcase />
+            <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
+              <div>
+                <p className="eyebrow text-brass">From the display case</p>
+                <h2 className="mt-2 font-serif text-3xl text-cream sm:text-4xl">
+                  {TOTAL_ITEMS}+ pieces of used gear, in the shop now
+                </h2>
+                <p className="mt-3 max-w-xl text-cream/70">
+                  Browse Jon&apos;s full marketplace of checked-and-cleaned
+                  cameras, lenses, flashes, and accessories — each with its
+                  condition, price, and item number. Find something, note the
+                  number, and call to reserve it.
+                </p>
+                <div className="mt-7 flex flex-wrap gap-4">
+                  <CTAButton href="/shop" variant="brass">
+                    Browse the shop
+                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  </CTAButton>
+                  <CTAButton
+                    href={`tel:${businessInfo.phoneHref}`}
+                    variant="ghost"
+                    external
+                  >
+                    <Phone className="h-4 w-4" aria-hidden="true" />
+                    Call Jon
+                  </CTAButton>
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                {shopPreview.map((it) => (
+                  <div
+                    key={it.id}
+                    className="overflow-hidden rounded-2xl border border-brass/25 bg-[#241810]"
+                  >
+                    <div className="aspect-square">
+                      <ShopImage src={it.image} alt={it.name} variant="camera" />
+                    </div>
+                    <div className="p-3">
+                      <p className="truncate text-xs text-cream/70">{it.name}</p>
+                      {typeof it.price === "number" && it.price > 0 && (
+                        <p className="font-serif text-brass-light">
+                          {formatPrice(it.price)}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>

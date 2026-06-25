@@ -10,7 +10,7 @@ import { businessInfo } from "@/data/businessInfo";
 const links: { label: string; href: string }[] = [
   { label: "Home", href: "/" },
   { label: "Services", href: "/services" },
-  { label: "Camera Gear", href: "/services/camera-equipment" },
+  { label: "Shop", href: "/shop" },
   { label: "About Jon", href: "/about" },
   { label: "Stories", href: "/stories" },
   { label: "In the Press", href: "/jon-in-the-press" },

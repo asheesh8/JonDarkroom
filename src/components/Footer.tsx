@@ -58,6 +58,7 @@ export function Footer() {
           </h3>
           <ul className="mt-4 space-y-2 text-sm">
             {[
+              { label: "Shop Used Gear", href: "/shop" },
               { label: "About Jon", href: "/about" },
               { label: "Stories From The Darkroom", href: "/stories" },
               { label: "Jon In The Press", href: "/jon-in-the-press" },
