@@ -20,6 +20,8 @@ export type Service = {
   title: string;
   /** lucide-react icon name — see components/icons.tsx */
   icon: string;
+  /** real reference photo for the service page hero (in /public/jons-assets) */
+  image: string;
   /** one-line summary for cards */
   short: string;
   /** hero tagline on the service page */
@@ -47,6 +49,7 @@ export const services: Service[] = [
     slug: "photo-finishing",
     title: "Photo Finishing",
     icon: "Image",
+    image: "/jons-assets/photo-film-formats_d1450.jpg",
     short:
       "Prints done right — true color, real paper, and an eye that's developed millions of frames.",
     tagline: "Prints with depth, color, and care.",
@@ -90,6 +93,7 @@ export const services: Service[] = [
     slug: "film-processing",
     title: "Film Processing",
     icon: "Film",
+    image: "/jons-assets/film_d1450.jpg",
     short:
       "C-41, black & white, and that roll you found in a drawer — developed and scanned with care.",
     tagline: "Your negatives, brought back to light.",
@@ -128,6 +132,7 @@ export const services: Service[] = [
     slug: "photo-restoration",
     title: "Photo Restoration",
     icon: "Sparkles",
+    image: "/jons-assets/tintype-photography-2.jpg",
     short:
       "Cracks, fading, water damage, missing corners — gently repaired so faces come back.",
     tagline: "Faded, torn, or water-stained? Bring it in.",
@@ -170,6 +175,7 @@ export const services: Service[] = [
     slug: "custom-framing",
     title: "Custom Framing",
     icon: "Frame",
+    image: "/jons-assets/Framing-Services_d400.jpg",
     short:
       "Wood, metal, mats, and museum glass — framed by hand to protect what matters.",
     tagline: "Framed to last a lifetime.",
@@ -212,6 +218,7 @@ export const services: Service[] = [
     slug: "camera-equipment",
     title: "Camera Equipment",
     icon: "Camera",
+    image: "/jons-assets/3c5af7f21c1e44ff9d0fbacbfa2ac97f.jpg",
     short:
       "New, used, and vintage cameras, lenses, and gear — plus we buy and sell.",
     tagline: "Cameras with stories, and gear you can hold first.",
@@ -254,6 +261,7 @@ export const services: Service[] = [
     slug: "video-transfers",
     title: "Video Transfers",
     icon: "Clapperboard",
+    image: "/jons-assets/Video-Tapes_d1450.jpg",
     short:
       "VHS, tapes, films, and slides moved to digital before they fade for good.",
     tagline: "Save the home movies before the tape gives out.",
@@ -296,6 +304,7 @@ export const services: Service[] = [
     slug: "passport-photos",
     title: "Passport & Visa Photos",
     icon: "BadgeCheck",
+    image: "/jons-assets/Passport-Photos_d400.jpg",
     short:
       "Fast, correct, government-compliant passport and visa photos while you wait.",
     tagline: "In and out, done right the first time.",
@@ -334,6 +343,7 @@ export const services: Service[] = [
     slug: "photo-gifts",
     title: "Photo Gifts",
     icon: "Gift",
+    image: "/jons-assets/Novelty-photo-gifts_d400.jpg",
     short:
       "Mugs, magnets, ornaments, calendars, and novelty keepsakes from your favorite photos.",
     tagline: "Turn a photo into something they'll keep.",

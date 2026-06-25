@@ -35,8 +35,8 @@ export default function AboutPage() {
               <div className="polaroid">
                 <div className="aspect-[4/5]">
                   <ShopImage
-                    src="/jons-assets/placeholder-jon-portrait.jpg"
-                    alt="Jon at work in his Essex Junction darkroom and frameshop"
+                    src="/jons-assets/Jons-Headshot_d400.jpg"
+                    alt="Jon Long, owner of Jon's Darkroom & Frameshop"
                     variant="camera"
                   />
                 </div>

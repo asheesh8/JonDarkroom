@@ -14,144 +14,186 @@ Images collected from the existing website should only be used with Jon's
 permission. Do NOT hotlink the old website's images from the new site — always
 serve local copies that Jon has approved.
 
+WHY A HEADLESS BROWSER?
+-----------------------
+jonsdarkroom.com is built with a JavaScript site builder (sitebuilder.com /
+mywebsitebuilder.com). The raw HTML contains **zero** content <img> tags — every
+photo is injected by JavaScript at runtime and served from blob/CDN storage.
+A plain requests + BeautifulSoup scrape therefore finds nothing, so this script
+renders each page with Playwright (headless Chromium) and captures the images
+that actually load, from both the DOM and the network.
+
 Behaviour
 ---------
-- Scans the main pages listed in PAGES.
-- Downloads <img> assets (src or data-src), skipping duplicates.
-- Saves images locally with content-hashed filenames.
-- Rate-limits requests so we're polite to the server.
-- Never crashes on a single failed page or image — it logs and moves on.
-- Writes a manifest.json describing every saved image:
-  source page, original URL, local filename, and alt text.
+- Renders the main pages (from the site's sitemap) with headless Chromium.
+- Captures <img> sources (incl. currentSrc) and image network responses.
+- Unwraps the site's /x/cdn/? proxy to the underlying asset URL.
+- Keeps only the LARGEST size variant of each image (…_d200 / _d400 / _d1450).
+- Skips icons, favicons, tiles, and the site-preview thumbnail.
+- Rate-limits, never crashes on a single failed page.
+- Writes manifest.json: source page, original URL, local filename, alt text, size.
 
-Usage
------
-    pip install requests beautifulsoup4
-    python3 scripts/scrape-jons-assets.py
-    # or:  npm run scrape
+Setup & usage
+-------------
+    pip install -r scripts/requirements.txt
+    python3 -m playwright install chromium
+    python3 scripts/scrape-jons-assets.py      # or: npm run scrape
 """
 
 import os
+import re
 import json
 import time
-import hashlib
-import requests
-from bs4 import BeautifulSoup
-from urllib.parse import urljoin, urlparse
+import asyncio
+from urllib.parse import urlparse, unquote
+
+from playwright.async_api import async_playwright
 
 BASE = "https://www.jonsdarkroom.com"
+
+# Main pages worth pulling reference imagery from (see sitemap.xml for the rest).
 PAGES = [
     "/",
     "/about",
     "/contact",
     "/custom-picture-framing",
-    "/photo-finishing-lab-services",
-    "/camera-equipment-for-sale",
-    "/video-transfer-services",
-    "/instant-passport-and-visa-photos",
+    "/photo-finishing-lab",
+    "/film-processing",
+    "/photo-restoration-services",
+    "/video-transfer",
+    "/passport-and-visa-photos",
+    "/cameras",
+    "/items-for-sale",
     "/novelty-photo-gifts",
+    "/vt-business-article",
+    "/customer-testimonials",
 ]
 
 OUT_DIR = "public/jons-assets"
-os.makedirs(OUT_DIR, exist_ok=True)
+PAGE_DELAY = 0.8
 
-# Be polite: identify the bot and rate-limit.
-HEADERS = {
-    "User-Agent": "Mozilla/5.0 jons-darkroom-website-redesign-asset-collector",
-}
-PAGE_DELAY = 1.0   # seconds between pages
-IMAGE_DELAY = 0.3  # seconds between image downloads
-
-manifest = []
-seen = set()
+SKIP = ("favicon", "touch-icon", "tile", "sitebuilder/", "wzsitethumbnails", "data:")
 
 
-def safe_name(url):
-    """Stable, collision-resistant filename derived from the image URL."""
-    parsed = urlparse(url)
-    ext = os.path.splitext(parsed.path)[1] or ".jpg"
-    clean_ext = ext.split("?")[0]
-    if len(clean_ext) > 5 or "/" in clean_ext:
-        clean_ext = ".jpg"
-    h = hashlib.md5(url.encode()).hexdigest()[:10]
-    return f"jon-{h}{clean_ext}"
+def unwrap(url: str) -> str:
+    """Unwrap the site's /x/cdn/?<realurl> image proxy."""
+    if "/x/cdn/?" in url:
+        return url.split("/x/cdn/?", 1)[1]
+    return url
 
 
-def download_image(img_url, alt, page_url):
-    """Download a single image. Returns True if saved."""
-    filename = safe_name(img_url)
-    path = os.path.join(OUT_DIR, filename)
-
-    try:
-        r = requests.get(img_url, headers=HEADERS, timeout=20)
-    except Exception as e:  # network error, timeout, etc.
-        print("  ! failed image:", img_url, e)
-        return False
-
-    content_type = r.headers.get("content-type", "")
-    if r.status_code == 200 and "image" in content_type:
-        try:
-            with open(path, "wb") as f:
-                f.write(r.content)
-        except OSError as e:
-            print("  ! could not write:", path, e)
-            return False
-
-        manifest.append(
-            {
-                "source_page": page_url,
-                "image_url": img_url,
-                "filename": filename,
-                "alt": alt,
-            }
-        )
-        print("  + downloaded:", filename)
-        return True
-
-    print(f"  - skipped (status {r.status_code}, type '{content_type}'):", img_url)
-    return False
+def size_of(url: str) -> int:
+    """Pull the _dNNN size hint from a filename so we can prefer the largest."""
+    m = re.search(r"_d(\d{2,4})\.", url)
+    return int(m.group(1)) if m else 0
 
 
-def scan_page(page):
-    page_url = urljoin(BASE, page)
-    print("Scanning:", page_url)
+def base_key(url: str) -> str:
+    """Group key that ignores the size suffix, so variants collapse to one image."""
+    path = urlparse(unwrap(url)).path
+    path = re.sub(r"_d\d{2,4}(?=\.\w+$)", "", path)
+    return path
 
-    try:
-        response = requests.get(page_url, headers=HEADERS, timeout=15)
-        response.raise_for_status()
-        html = response.text
-    except Exception as e:
-        print("  ! failed page:", page_url, e)
-        return
 
-    soup = BeautifulSoup(html, "html.parser")
+def clean_filename(url: str) -> str:
+    real = unwrap(url)
+    name = os.path.basename(urlparse(real).path) or "image"
+    name = unquote(name)
+    name = re.sub(r"[^A-Za-z0-9._-]", "-", name)
+    if "." not in name:
+        name += ".jpg"
+    return name
 
-    for img in soup.find_all("img"):
-        src = img.get("src") or img.get("data-src")
-        if not src:
-            continue
 
-        img_url = urljoin(page_url, src)
-        if img_url in seen:
-            continue
-        seen.add(img_url)
+async def collect():
+    """Render each page; return {base_key: best_image_record}."""
+    best = {}
+    async with async_playwright() as p:
+        browser = await p.chromium.launch()
+        ctx = await browser.new_context(user_agent="Mozilla/5.0 jons-darkroom-redesign")
+        for path in PAGES:
+            page_url = BASE + path
+            print("Rendering:", page_url)
+            page = await ctx.new_page()
+            net = set()
+            page.on(
+                "response",
+                lambda r: net.add(r.url) if r.request.resource_type == "image" else None,
+            )
+            try:
+                await page.goto(page_url, wait_until="networkidle", timeout=35000)
+                await page.wait_for_timeout(1500)
+                dom = await page.eval_on_selector_all(
+                    "img",
+                    "els => els.map(e => ({src: e.currentSrc || e.src, alt: e.alt || ''}))",
+                )
+            except Exception as e:
+                print("  ! failed page:", path, str(e)[:90])
+                await page.close()
+                continue
 
-        alt = img.get("alt", "") or ""
-        if download_image(img_url, alt, page_url):
-            time.sleep(IMAGE_DELAY)
+            records = [{"src": s, "alt": ""} for s in net]
+            records += [d for d in dom if d.get("src")]
+
+            for rec in records:
+                src = rec["src"]
+                if not src or not src.startswith("http"):
+                    continue
+                if any(k in src for k in SKIP):
+                    continue
+                key = base_key(src)
+                cur = best.get(key)
+                if cur is None or size_of(src) > size_of(cur["src"]):
+                    best[key] = {
+                        "src": src,
+                        "alt": rec.get("alt") or (cur["alt"] if cur else ""),
+                        "page": page_url,
+                    }
+                elif rec.get("alt") and not best[key]["alt"]:
+                    best[key]["alt"] = rec["alt"]
+
+            await page.close()
+            time.sleep(PAGE_DELAY)
+
+        # download with the same browser context (handles the CDN proxy nicely)
+        manifest = []
+        os.makedirs(OUT_DIR, exist_ok=True)
+        api = await ctx.new_page()
+        for rec in best.values():
+            url = rec["src"]
+            filename = clean_filename(url)
+            dest = os.path.join(OUT_DIR, filename)
+            try:
+                resp = await api.request.get(url, timeout=30000)
+                if resp.ok and "image" in (resp.headers.get("content-type", "")):
+                    with open(dest, "wb") as f:
+                        f.write(await resp.body())
+                    manifest.append(
+                        {
+                            "source_page": rec["page"],
+                            "image_url": unwrap(url),
+                            "filename": filename,
+                            "alt": rec["alt"],
+                            "size_hint": size_of(url) or None,
+                        }
+                    )
+                    print("  + downloaded:", filename)
+                else:
+                    print("  - skipped:", filename, resp.status)
+            except Exception as e:
+                print("  ! failed image:", filename, str(e)[:80])
+            await asyncio.sleep(0.2)
+
+        await browser.close()
+    return manifest
 
 
 def main():
-    for page in PAGES:
-        scan_page(page)
-        time.sleep(PAGE_DELAY)
-
-    manifest_path = os.path.join(OUT_DIR, "manifest.json")
-    with open(manifest_path, "w") as f:
+    manifest = asyncio.run(collect())
+    with open(os.path.join(OUT_DIR, "manifest.json"), "w") as f:
         json.dump(manifest, f, indent=2)
-
     print(f"\nDone. Downloaded {len(manifest)} images.")
-    print(f"Manifest written to {manifest_path}")
+    print(f"Manifest written to {os.path.join(OUT_DIR, 'manifest.json')}")
     print(
         "\nReminder: images collected from the existing website should only be "
         "used with Jon's permission."

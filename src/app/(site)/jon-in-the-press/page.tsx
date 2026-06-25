@@ -5,6 +5,7 @@ import { CTAButton } from "@/components/CTAButton";
 import { FilmStripDivider } from "@/components/FilmStripDivider";
 import { PressArticleBlock } from "@/components/PressArticleBlock";
 import { SectionHeader } from "@/components/SectionHeader";
+import { ShopImage } from "@/components/ShopImage";
 import {
   featuredArticle,
   pressArchive,
@@ -56,6 +57,29 @@ export default function PressPage() {
       <section className="surface-wood py-16 sm:py-20">
         <div className="shell max-w-4xl">
           <PressArticleBlock article={featuredArticle} featured />
+
+          {featuredArticle.pages && featuredArticle.pages.length > 0 && (
+            <div className="mt-12">
+              <p className="eyebrow mb-4 text-center text-brass">
+                The full feature — {featuredArticle.publication}
+              </p>
+              <div className="grid gap-6 sm:grid-cols-3">
+                {featuredArticle.pages.map((pg, i) => (
+                  <figure
+                    key={i}
+                    className="overflow-hidden rounded-lg border border-brass/30 bg-white p-1.5 shadow-counter"
+                  >
+                    <div className="aspect-[3/4]">
+                      <ShopImage src={pg.src} alt={pg.alt} variant="newspaper" />
+                    </div>
+                    <figcaption className="px-1 py-2 text-center text-xs italic text-walnut/70">
+                      Page {i + 1}
+                    </figcaption>
+                  </figure>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </section>
 

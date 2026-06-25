@@ -7,10 +7,11 @@ import { CTAButton } from "@/components/CTAButton";
 import { FilmStripDivider } from "@/components/FilmStripDivider";
 import { ServiceIcon } from "@/components/icons";
 import { InventoryShowcase } from "@/components/InventoryShowcase";
-import { BeforeAfterBlock } from "@/components/BeforeAfterBlock";
+import { PolaroidImageCard } from "@/components/PolaroidImageCard";
 import { ContactCard } from "@/components/ContactCard";
+import { ShopImage } from "@/components/ShopImage";
 import { services, getService, allServiceSlugs } from "@/data/services";
-import { restorationPairs } from "@/data/gallery";
+import { restorationExamples } from "@/data/gallery";
 import { businessInfo } from "@/data/businessInfo";
 
 export function generateStaticParams() {
@@ -72,6 +73,21 @@ export default function ServiceDetailPage({
           {service.vibe}
         </p>
       </PageHero>
+
+      {/* real reference photo band */}
+      <section className="surface-wood-dark py-10">
+        <div className="shell">
+          <div className="mx-auto max-w-4xl overflow-hidden rounded-lg border border-brass/30 shadow-counter">
+            <div className="aspect-[16/8]">
+              <ShopImage
+                src={service.image}
+                alt={`${service.title} at Jon's Darkroom & Frameshop`}
+                variant="camera"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
 
       <FilmStripDivider />
 
@@ -149,13 +165,19 @@ export default function ServiceDetailPage({
       {service.slug === "photo-restoration" && (
         <section className="surface-wood py-16 sm:py-20">
           <div className="shell">
-            <p className="eyebrow text-brass">Before &amp; after</p>
+            <p className="eyebrow text-brass">Restoration examples</p>
             <h2 className="mt-2 font-serif text-3xl text-cream sm:text-4xl">
-              See what restoration can do
+              The kind of photographs we help save
             </h2>
-            <div className="mt-10 grid gap-8 md:grid-cols-2">
-              {restorationPairs.map((pair) => (
-                <BeforeAfterBlock key={pair.id} pair={pair} />
+            <div className="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-4">
+              {restorationExamples.map((ex, i) => (
+                <PolaroidImageCard
+                  key={ex.id}
+                  src={ex.src}
+                  alt={ex.alt}
+                  caption={ex.caption}
+                  tilt={[-2.5, 1.5, -1.5, 2][i % 4]}
+                />
               ))}
             </div>
           </div>

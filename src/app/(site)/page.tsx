@@ -16,14 +16,13 @@ import { FilmStripDivider } from "@/components/FilmStripDivider";
 import { MemoryDesk } from "@/components/MemoryDesk";
 import { ServiceCard } from "@/components/ServiceCard";
 import { NewspaperFeature } from "@/components/NewspaperFeature";
-import { BeforeAfterBlock } from "@/components/BeforeAfterBlock";
 import { PolaroidImageCard } from "@/components/PolaroidImageCard";
 import { BlogCard } from "@/components/BlogCard";
 import { ContactCard } from "@/components/ContactCard";
 import { ShopImage } from "@/components/ShopImage";
 import { getFeaturedServices } from "@/data/services";
 import { getLatestPosts } from "@/data/blogPosts";
-import { restorationPairs, framingShowcase } from "@/data/gallery";
+import { restorationExamples, framingShowcase } from "@/data/gallery";
 import { businessInfo, mapEmbedUrl, directionsUrl } from "@/data/businessInfo";
 
 export default function HomePage() {
@@ -37,12 +36,12 @@ export default function HomePage() {
         {/* warm storefront background placeholder */}
         <div className="absolute inset-0" aria-hidden="true">
           <ShopImage
-            src="/jons-assets/placeholder-hero-counter.jpg"
+            src="/jons-assets/film_d1450.jpg"
             alt=""
             variant="camera"
             className="opacity-100"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-espresso/85 via-espresso/75 to-espresso" />
+          <div className="absolute inset-0 bg-gradient-to-b from-espresso/90 via-espresso/80 to-espresso" />
           <div className="absolute inset-0 bg-[radial-gradient(80%_60%_at_30%_20%,rgba(176,141,87,0.18),transparent_60%)]" />
         </div>
 
@@ -193,7 +192,7 @@ export default function HomePage() {
               align="left"
               eyebrow="Photo Restoration"
               title="Bring the faces back"
-              description="Cracks, fading, water damage, missing corners — gently repaired by hand and reprinted. Drag the slider to see what's possible."
+              description="Cracks, fading, water damage, missing corners — gently repaired by hand and reprinted. A few examples of the kind of photographs we help save."
             />
             <div className="mt-7">
               <CTAButton href="/services/photo-restoration" variant="paper">
@@ -202,9 +201,15 @@ export default function HomePage() {
               </CTAButton>
             </div>
           </div>
-          <div>
-            {restorationPairs.map((pair) => (
-              <BeforeAfterBlock key={pair.id} pair={pair} />
+          <div className="grid grid-cols-2 gap-5 sm:gap-6">
+            {restorationExamples.map((ex, i) => (
+              <PolaroidImageCard
+                key={ex.id}
+                src={ex.src}
+                alt={ex.alt}
+                caption={ex.caption}
+                tilt={[-2.5, 1.5, 2, -1.5][i % 4]}
+              />
             ))}
           </div>
         </div>
@@ -252,8 +257,8 @@ export default function HomePage() {
               <div className="polaroid">
                 <div className="aspect-[4/5]">
                   <ShopImage
-                    src="/jons-assets/placeholder-jon-portrait.jpg"
-                    alt="Jon at the counter of his darkroom and frameshop"
+                    src="/jons-assets/Jons-Headshot_d400.jpg"
+                    alt="Jon Long, owner of Jon's Darkroom & Frameshop"
                     variant="camera"
                   />
                 </div>
