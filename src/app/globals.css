@@ -1,0 +1,223 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================================
+   Jon's Darkroom & Frameshop — base styles
+   Palette: walnut, espresso, cream, brass, charcoal, film, burgundy
+   ========================================================================= */
+
+:root {
+  --paper-edge: rgba(44, 30, 22, 0.18);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-espresso text-cream font-sans antialiased;
+    /* faint espresso vignette so the page feels like a dim, warm shop */
+    background-image:
+      radial-gradient(120% 90% at 50% -10%, rgba(176, 141, 87, 0.10), transparent 60%),
+      linear-gradient(180deg, #2c1e16 0%, #241810 100%);
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-serif tracking-tight;
+  }
+
+  /* keyboard focus — brass ring, visible on dark and light sections */
+  :focus-visible {
+    outline: 2px solid #c9a877;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: rgba(176, 141, 87, 0.35);
+    color: #f4e9d8;
+  }
+}
+
+@layer components {
+  /* --- Section width helper --- */
+  .shell {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+
+  /* --- WOOD: a warm walnut surface with grain --- */
+  .surface-wood {
+    background-image:
+      repeating-linear-gradient(
+        92deg,
+        rgba(0, 0, 0, 0.06) 0px,
+        rgba(0, 0, 0, 0.06) 2px,
+        transparent 2px,
+        transparent 9px
+      ),
+      repeating-linear-gradient(
+        88deg,
+        rgba(255, 255, 255, 0.025) 0px,
+        rgba(255, 255, 255, 0.025) 1px,
+        transparent 1px,
+        transparent 14px
+      ),
+      linear-gradient(150deg, #5c4033 0%, #3a2a20 55%, #2c1e16 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06),
+      inset 0 -40px 80px -40px rgba(0, 0, 0, 0.6);
+  }
+
+  .surface-wood-dark {
+    background-image:
+      repeating-linear-gradient(
+        92deg,
+        rgba(0, 0, 0, 0.10) 0px,
+        rgba(0, 0, 0, 0.10) 2px,
+        transparent 2px,
+        transparent 8px
+      ),
+      linear-gradient(150deg, #3a2a20 0%, #2c1e16 60%, #1f150e 100%);
+  }
+
+  /* --- CREAM PAPER: aged paper section --- */
+  .surface-paper {
+    @apply text-charcoal;
+    background-color: #f4e9d8;
+    background-image:
+      radial-gradient(rgba(92, 64, 51, 0.05) 1px, transparent 1px),
+      radial-gradient(circle at 0% 0%, rgba(123, 63, 63, 0.05), transparent 40%),
+      radial-gradient(circle at 100% 100%, rgba(92, 64, 51, 0.07), transparent 45%);
+    background-size: 5px 5px, 100% 100%, 100% 100%;
+  }
+
+  /* torn / deckled paper card */
+  .card-paper {
+    @apply rounded-sm text-charcoal;
+    background-color: #f4e9d8;
+    background-image:
+      radial-gradient(rgba(92, 64, 51, 0.05) 1px, transparent 1px),
+      radial-gradient(circle at 0% 0%, rgba(123, 63, 63, 0.05), transparent 40%),
+      radial-gradient(circle at 100% 100%, rgba(92, 64, 51, 0.07), transparent 45%);
+    background-size: 5px 5px, 100% 100%, 100% 100%;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset,
+      0 14px 30px -16px rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(92, 64, 51, 0.2);
+  }
+
+  /* --- BRASS accents --- */
+  .text-brass-grad {
+    background: linear-gradient(180deg, #d8bd92 0%, #b08d57 55%, #8e6e40 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .hairline-brass {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(176, 141, 87, 0.7) 20%,
+      rgba(201, 168, 119, 0.9) 50%,
+      rgba(176, 141, 87, 0.7) 80%,
+      transparent
+    );
+  }
+
+  /* --- WOOD PLAQUE: engraved brass-rimmed plaque --- */
+  .plaque {
+    @apply rounded-md;
+    background-image:
+      repeating-linear-gradient(
+        92deg,
+        rgba(0, 0, 0, 0.06) 0px,
+        rgba(0, 0, 0, 0.06) 2px,
+        transparent 2px,
+        transparent 9px
+      ),
+      linear-gradient(150deg, #5c4033 0%, #3a2a20 55%, #2c1e16 100%);
+    border: 1px solid rgba(176, 141, 87, 0.45);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      inset 0 0 0 4px rgba(28, 18, 12, 0.35),
+      0 16px 30px -14px rgba(0, 0, 0, 0.7);
+  }
+
+  .plaque-screw {
+    @apply absolute h-2.5 w-2.5 rounded-full;
+    background: radial-gradient(circle at 35% 30%, #d8bd92, #8e6e40 70%, #5c4033);
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.3),
+      0 1px 1px rgba(0, 0, 0, 0.5);
+  }
+
+  /* --- POLAROID --- */
+  .polaroid {
+    @apply bg-[#fbf6ec] p-3 pb-12;
+    box-shadow: 0 14px 30px -12px rgba(0, 0, 0, 0.65),
+      0 2px 0 rgba(255, 255, 255, 0.4) inset;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  /* --- FILM STRIP --- */
+  .film-strip {
+    background: #101010;
+    position: relative;
+  }
+  .film-perfs {
+    background-image:
+      radial-gradient(#f4e9d8 0 0) /* placeholder, replaced below */;
+  }
+
+  /* --- TAPE pieces (for pinned paper / polaroids) --- */
+  .tape {
+    @apply absolute z-20 h-6 w-20;
+    background: rgba(244, 233, 216, 0.55);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(1px);
+  }
+
+  /* --- engraved label text on wood --- */
+  .engraved {
+    color: #c9a877;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.55), 0 -1px 0 rgba(255, 255, 255, 0.06);
+  }
+
+  /* --- buttons handled by CTAButton component, but a base reset --- */
+  .btn-reset {
+    @apply inline-flex items-center justify-center gap-2 font-medium transition;
+  }
+}
+
+@layer utilities {
+  /* small-caps eyebrow */
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.25em];
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* gentle paper grain overlay you can stack on any element */
+  .grain::after {
+    content: "";
+    @apply pointer-events-none absolute inset-0;
+    background-image: radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+    background-size: 3px 3px;
+    mix-blend-mode: multiply;
+  }
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
