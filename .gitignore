@@ -28,10 +28,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 
-# scraped assets (collected with permission only — see public/jons-assets/README.md)
-/public/jons-assets/*
-!/public/jons-assets/README.md
-
 # python
 __pycache__/
 *.pyc
