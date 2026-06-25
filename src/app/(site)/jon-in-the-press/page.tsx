@@ -76,21 +76,44 @@ export default function PressPage() {
             eyebrow="The story of the shop"
             title="From opening day to today"
           />
-          <ol className="mx-auto mt-12 grid max-w-4xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {shopTimeline.map((entry) => (
+          <ol className="relative mx-auto mt-14 max-w-5xl before:absolute before:bottom-4 before:left-5 before:top-4 before:w-px before:bg-gradient-to-b before:from-transparent before:via-brass/55 before:to-transparent md:before:left-1/2 md:before:-translate-x-1/2">
+            {shopTimeline.map((entry, index) => (
               <li
                 key={entry.year}
-                className="rounded-2xl border border-brass/25 bg-[#241810]/60 p-6"
+                className={`relative grid gap-5 pb-10 last:pb-0 md:grid-cols-[1fr_5rem_1fr] md:items-center ${
+                  index % 2 === 0 ? "" : "md:[&_.timeline-card]:col-start-3"
+                }`}
               >
-                <p className="font-serif text-3xl text-brass-light">
-                  {entry.year}
-                </p>
-                <h3 className="mt-1 font-serif text-lg text-cream">
-                  {entry.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-cream/65">
-                  {entry.body}
-                </p>
+                <div
+                  className={`timeline-card ml-14 rounded-2xl border border-brass/25 bg-[#241810]/75 p-6 shadow-counter transition hover:-translate-y-0.5 hover:border-brass/55 md:ml-0 ${
+                    index % 2 === 0 ? "md:text-right" : "md:text-left"
+                  }`}
+                >
+                  <p className="font-serif text-3xl text-brass-light">
+                    {entry.year}
+                  </p>
+                  <h3 className="mt-1 font-serif text-lg text-cream">
+                    {entry.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-cream/65">
+                    {entry.body}
+                  </p>
+                </div>
+
+                <div className="absolute left-5 top-2 z-10 -translate-x-1/2 md:static md:col-start-2 md:row-start-1 md:grid md:translate-x-0 md:place-items-center">
+                  <span className="grid h-10 w-10 place-items-center rounded-full border border-brass/60 bg-espresso text-sm font-semibold text-brass shadow-brass ring-8 ring-[#2c1e16]">
+                    {index + 1}
+                  </span>
+                </div>
+
+                <div
+                  className={`hidden md:block ${
+                    index % 2 === 0 ? "md:col-start-3" : "md:col-start-1 md:row-start-1"
+                  }`}
+                  aria-hidden="true"
+                >
+                  <div className="h-px w-full bg-gradient-to-r from-brass/45 to-transparent" />
+                </div>
               </li>
             ))}
           </ol>
