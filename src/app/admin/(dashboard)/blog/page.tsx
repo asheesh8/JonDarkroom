@@ -53,15 +53,15 @@ export default function AdminBlogPage() {
             >
               <div className="min-w-0">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="rounded-full bg-burgundy/20 px-2.5 py-0.5 text-[0.65rem] font-semibold uppercase tracking-wide text-brass-light">
+                  <span className="rounded-sm bg-burgundy/20 px-2.5 py-0.5 text-[0.65rem] font-semibold uppercase tracking-wide text-brass-light">
                     {post.category}
                   </span>
                   {post.draft ? (
-                    <span className="rounded-full bg-charcoal px-2.5 py-0.5 text-[0.65rem] uppercase tracking-wide text-cream/60">
+                    <span className="rounded-sm bg-charcoal px-2.5 py-0.5 text-[0.65rem] uppercase tracking-wide text-cream/60">
                       Draft
                     </span>
                   ) : (
-                    <span className="rounded-full bg-[#3a5a40]/60 px-2.5 py-0.5 text-[0.65rem] uppercase tracking-wide text-cream">
+                    <span className="rounded-sm bg-[#3a5a40]/60 px-2.5 py-0.5 text-[0.65rem] uppercase tracking-wide text-cream">
                       Published
                     </span>
                   )}

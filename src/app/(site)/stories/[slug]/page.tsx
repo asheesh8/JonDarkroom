@@ -64,7 +64,7 @@ export default function StoryPage({
             <ArrowLeft className="h-4 w-4" aria-hidden="true" />
             All stories
           </Link>
-          <span className="mt-5 inline-block rounded-full bg-burgundy/20 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-brass-light">
+          <span className="mt-5 inline-block rounded-sm bg-burgundy/20 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-brass-light">
             {post.category}
           </span>
           <h1 className="mt-4 font-serif text-4xl leading-tight text-cream text-balance sm:text-5xl">
@@ -87,7 +87,7 @@ export default function StoryPage({
       {/* cover */}
       <div className="surface-wood-dark">
         <div className="shell max-w-4xl py-10">
-          <div className="overflow-hidden rounded-3xl border border-brass/25 shadow-counter">
+          <div className="overflow-hidden rounded-sm border border-brass/25 shadow-counter">
             <div className="aspect-[16/9]">
               <ShopImage src={post.cover} alt={post.coverAlt} />
             </div>
@@ -118,7 +118,7 @@ export default function StoryPage({
             )}
           </div>
 
-          <div className="mt-12 rounded-3xl border border-walnut/20 bg-cream-dark/50 p-6 text-center">
+          <div className="mt-12 rounded-sm border border-walnut/20 bg-cream-dark/50 p-6 text-center">
             <p className="font-serif text-xl text-espresso">
               Have a project like this?
             </p>

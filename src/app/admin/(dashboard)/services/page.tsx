@@ -65,7 +65,7 @@ export default function AdminServicesPage() {
                 type="button"
                 onClick={() => update(s.slug, { featured: !s.featured })}
                 className={cn(
-                  "ml-auto flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs transition",
+                  "ml-auto flex items-center gap-1.5 rounded-sm border px-3 py-1 text-xs transition",
                   s.featured
                     ? "border-brass bg-brass/15 text-brass"
                     : "border-cream/20 text-cream/50 hover:border-brass/50",

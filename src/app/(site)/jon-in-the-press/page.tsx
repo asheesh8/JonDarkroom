@@ -85,7 +85,7 @@ export default function PressPage() {
                 }`}
               >
                 <div
-                  className={`timeline-card ml-14 rounded-2xl border border-brass/25 bg-[#241810]/75 p-6 shadow-counter transition hover:-translate-y-0.5 hover:border-brass/55 md:ml-0 ${
+                  className={`timeline-card ml-14 rounded-sm border border-brass/25 bg-[#241810]/75 p-6 shadow-counter transition hover:-translate-y-0.5 hover:border-brass/55 md:ml-0 ${
                     index % 2 === 0 ? "md:text-right" : "md:text-left"
                   }`}
                 >

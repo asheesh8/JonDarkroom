@@ -53,7 +53,7 @@ export default function ContactPage() {
         <div className="shell grid gap-8 lg:grid-cols-2 lg:items-stretch">
           <ContactCard />
 
-          <div className="overflow-hidden rounded-3xl border border-brass/30 shadow-counter">
+          <div className="overflow-hidden rounded-sm border border-brass/30 shadow-counter">
             <iframe
               title={`Map to ${businessInfo.name}`}
               src={mapEmbedUrl}
@@ -68,7 +68,7 @@ export default function ContactPage() {
         <div className="shell mt-8 grid gap-4 sm:grid-cols-3">
           <a
             href={directionsUrl}
-            className="flex items-center gap-3 rounded-2xl border border-brass/25 bg-[#241810]/60 p-5 transition hover:border-brass/60"
+            className="flex items-center gap-3 rounded-sm border border-brass/25 bg-[#241810]/60 p-5 transition hover:border-brass/60"
           >
             <MapPin className="h-6 w-6 text-brass" aria-hidden="true" />
             <span>
@@ -80,7 +80,7 @@ export default function ContactPage() {
           </a>
           <a
             href={`tel:${businessInfo.phoneHref}`}
-            className="flex items-center gap-3 rounded-2xl border border-brass/25 bg-[#241810]/60 p-5 transition hover:border-brass/60"
+            className="flex items-center gap-3 rounded-sm border border-brass/25 bg-[#241810]/60 p-5 transition hover:border-brass/60"
           >
             <Phone className="h-6 w-6 text-brass" aria-hidden="true" />
             <span>
@@ -94,7 +94,7 @@ export default function ContactPage() {
           </a>
           <a
             href={`mailto:${businessInfo.email}`}
-            className="flex items-center gap-3 rounded-2xl border border-brass/25 bg-[#241810]/60 p-5 transition hover:border-brass/60"
+            className="flex items-center gap-3 rounded-sm border border-brass/25 bg-[#241810]/60 p-5 transition hover:border-brass/60"
           >
             <Mail className="h-6 w-6 text-brass" aria-hidden="true" />
             <span>

@@ -36,7 +36,7 @@ export function AdminPageHeader({
 
 export function MockNotice() {
   return (
-    <div className="mb-6 flex items-start gap-3 rounded-2xl border border-brass/30 bg-brass/10 p-4 text-sm text-cream/80">
+    <div className="mb-6 flex items-start gap-3 rounded-sm border border-brass/30 bg-brass/10 p-4 text-sm text-cream/80">
       <Info className="mt-0.5 h-4 w-4 shrink-0 text-brass" aria-hidden="true" />
       <p>
         <span className="font-medium text-brass">Demo admin.</span> Changes here
@@ -59,7 +59,7 @@ export function Card({
   return (
     <div
       className={cn(
-        "rounded-2xl border border-brass/20 bg-[#241810]/70 p-5 sm:p-6",
+        "rounded-sm border border-brass/20 bg-[#241810]/70 p-5 sm:p-6",
         className,
       )}
     >
@@ -94,7 +94,7 @@ export function Field({
 }
 
 const inputBase =
-  "w-full rounded-xl border border-brass/25 bg-espresso/60 px-3.5 py-2.5 text-sm text-cream placeholder:text-cream/30 focus:border-brass focus:outline-none focus:ring-1 focus:ring-brass";
+  "w-full rounded-sm border border-brass/25 bg-espresso/60 px-3.5 py-2.5 text-sm text-cream placeholder:text-cream/30 focus:border-brass focus:outline-none focus:ring-1 focus:ring-brass";
 
 export function TextInput(
   props: React.InputHTMLAttributes<HTMLInputElement>,
@@ -155,7 +155,7 @@ export function SaveForm({
         <button
           type="submit"
           disabled={saving}
-          className="btn-reset rounded-full bg-gradient-to-b from-brass-light to-brass-dark px-6 py-2.5 text-sm font-medium text-espresso shadow-brass transition hover:-translate-y-0.5 disabled:opacity-60"
+          className="btn-reset rounded-sm bg-gradient-to-b from-brass-light to-brass-dark px-6 py-2.5 text-sm font-medium text-espresso shadow-brass transition hover:-translate-y-0.5 disabled:opacity-60"
         >
           <Save className="h-4 w-4" aria-hidden="true" />
           {saving ? "Saving…" : submitLabel}

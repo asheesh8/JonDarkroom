@@ -36,8 +36,8 @@ export default function AdminDashboard() {
 
   return (
     <div className="space-y-10">
-      <div className="relative overflow-hidden rounded-3xl border border-brass/25 bg-[#241810]/75 p-6 shadow-counter sm:p-8">
-        <div className="absolute -right-16 -top-20 h-56 w-56 rounded-full bg-brass/10 blur-3xl" />
+      <div className="relative overflow-hidden rounded-sm border border-brass/25 bg-[#241810]/75 p-6 shadow-counter sm:p-8">
+        <div className="absolute inset-x-0 top-0 h-px bg-brass/25" />
         <div className="relative flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div>
             <p className="eyebrow text-brass">Admin counter</p>
@@ -50,15 +50,15 @@ export default function AdminDashboard() {
             </p>
           </div>
           <div className="grid gap-3 text-sm text-cream/70 sm:grid-cols-3 lg:min-w-[420px]">
-            <div className="rounded-2xl border border-brass/20 bg-espresso/55 p-4">
+            <div className="rounded-sm border border-brass/20 bg-espresso/55 p-4">
               <ShieldCheck className="mb-2 h-5 w-5 text-brass" />
               Login: JON
             </div>
-            <div className="rounded-2xl border border-brass/20 bg-espresso/55 p-4">
+            <div className="rounded-sm border border-brass/20 bg-espresso/55 p-4">
               <Clock className="mb-2 h-5 w-5 text-brass" />
               Mon-Fri {businessInfo.hours[0].hours}
             </div>
-            <div className="rounded-2xl border border-brass/20 bg-espresso/55 p-4">
+            <div className="rounded-sm border border-brass/20 bg-espresso/55 p-4">
               <MessageSquareQuote className="mb-2 h-5 w-5 text-brass" />
               {googleReviewSummary.rating} Google rating
             </div>
@@ -74,10 +74,10 @@ export default function AdminDashboard() {
           <Link
             key={s.label}
             href={s.href}
-            className="group rounded-xl border border-brass/20 bg-[#241810]/70 p-5 transition hover:border-brass/50"
+            className="group rounded-sm border border-brass/20 bg-[#241810]/70 p-5 transition hover:border-brass/50"
           >
             <div className="flex items-center justify-between">
-              <span className="grid h-10 w-10 place-items-center rounded-xl border border-brass/30 text-brass">
+              <span className="grid h-10 w-10 place-items-center rounded-sm border border-brass/30 text-brass">
                 <s.icon className="h-5 w-5" aria-hidden="true" />
               </span>
               <ArrowRight className="h-4 w-4 text-cream/30 transition group-hover:translate-x-1 group-hover:text-brass" aria-hidden="true" />
@@ -110,9 +110,9 @@ export default function AdminDashboard() {
             <Link
               key={q.href}
               href={q.href}
-              className="group flex items-start gap-4 rounded-2xl border border-brass/20 bg-[#241810]/70 p-5 transition hover:-translate-y-0.5 hover:border-brass/50 hover:bg-[#2b1d14]/80"
+              className="group flex items-start gap-4 rounded-sm border border-brass/20 bg-[#241810]/70 p-5 transition hover:-translate-y-0.5 hover:border-brass/50 hover:bg-[#2b1d14]/80"
             >
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-brass/30 bg-espresso text-brass">
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-sm border border-brass/30 bg-espresso text-brass">
                 <q.icon className="h-5 w-5" aria-hidden="true" />
               </span>
               <span>
@@ -130,7 +130,7 @@ export default function AdminDashboard() {
       </section>
 
       {/* announcement reminder */}
-      <div className="rounded-2xl border border-brass/20 bg-[#241810]/70 p-5">
+      <div className="rounded-sm border border-brass/20 bg-[#241810]/70 p-5">
         <h2 className="font-serif text-xl text-cream">Homepage announcement</h2>
         <p className="mt-2 text-sm text-cream/60">
           The shop is currently showing standard hours: Mon–Fri{" "}

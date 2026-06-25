@@ -70,7 +70,7 @@ export function ContactCard({ className }: { className?: string }) {
               Shop hours
             </p>
           </div>
-          <dl className="mt-3 divide-y divide-walnut/15 rounded-2xl border border-walnut/15 overflow-hidden">
+          <dl className="mt-3 divide-y divide-walnut/15 rounded-sm border border-walnut/15 overflow-hidden">
             {businessInfo.hours.map((h) => (
               <div
                 key={h.day}

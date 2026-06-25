@@ -17,7 +17,7 @@ export function GoogleReviews() {
               film, and last-minute gifts. The common thread: Jon takes the time
               to help the piece look right.
             </p>
-            <div className="mt-7 inline-flex items-center gap-4 rounded-2xl border border-walnut/15 bg-white/55 px-5 py-4 shadow-counter">
+            <div className="mt-7 inline-flex items-center gap-4 rounded-sm border border-walnut/15 bg-white/55 px-5 py-4 shadow-counter">
               <div>
                 <p className="font-serif text-4xl leading-none text-burgundy">
                   {googleReviewSummary.rating}

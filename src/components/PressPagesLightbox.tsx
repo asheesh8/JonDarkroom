@@ -54,12 +54,12 @@ export function PressPagesLightbox({ pages }: { pages: PressPage[] }) {
             key={pg.src}
             type="button"
             onClick={() => setActive(i)}
-            className="group overflow-hidden rounded-2xl border border-brass/30 bg-white p-1.5 text-left shadow-counter transition hover:-translate-y-1 hover:border-brass"
+            className="group overflow-hidden rounded-sm border border-brass/30 bg-white p-1.5 text-left shadow-counter transition hover:-translate-y-1 hover:border-brass"
           >
             <span className="relative block aspect-[3/4] overflow-hidden">
               <ShopImage src={pg.src} alt={pg.alt} variant="newspaper" />
               <span className="absolute inset-0 grid place-items-center bg-espresso/0 transition group-hover:bg-espresso/35">
-                <span className="inline-flex items-center gap-2 rounded-full bg-cream px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-espresso opacity-0 shadow-counter transition group-hover:opacity-100">
+                <span className="inline-flex items-center gap-2 rounded-sm bg-cream px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-espresso opacity-0 shadow-counter transition group-hover:opacity-100">
                   <Expand className="h-4 w-4" aria-hidden="true" />
                   Open page
                 </span>
@@ -83,7 +83,7 @@ export function PressPagesLightbox({ pages }: { pages: PressPage[] }) {
             type="button"
             onClick={() => setActive(null)}
             aria-label="Close article viewer"
-            className="absolute right-4 top-4 z-10 grid h-11 w-11 place-items-center rounded-full border border-brass/40 bg-espresso text-cream shadow-counter transition hover:bg-burgundy"
+            className="absolute right-4 top-4 z-10 grid h-11 w-11 place-items-center rounded-sm border border-brass/40 bg-espresso text-cream shadow-counter transition hover:bg-burgundy"
           >
             <X className="h-5 w-5" aria-hidden="true" />
           </button>
@@ -99,7 +99,7 @@ export function PressPagesLightbox({ pages }: { pages: PressPage[] }) {
               </p>
             </div>
 
-            <div className="min-h-0 flex-1 overflow-auto rounded-2xl border border-brass/25 bg-[#f7f1e7] p-3 shadow-counter sm:p-5">
+            <div className="min-h-0 flex-1 overflow-auto rounded-sm border border-brass/25 bg-[#f7f1e7] p-3 shadow-counter sm:p-5">
               <div className="mx-auto max-w-3xl">
                 <ShopImage
                   src={current.src}
@@ -114,7 +114,7 @@ export function PressPagesLightbox({ pages }: { pages: PressPage[] }) {
               <button
                 type="button"
                 onClick={previous}
-                className="btn-reset rounded-full border border-brass/40 px-4 py-2 text-sm text-cream transition hover:bg-brass/10"
+                className="btn-reset rounded-sm border border-brass/40 px-4 py-2 text-sm text-cream transition hover:bg-brass/10"
               >
                 <ChevronLeft className="h-4 w-4" aria-hidden="true" />
                 Previous
@@ -122,7 +122,7 @@ export function PressPagesLightbox({ pages }: { pages: PressPage[] }) {
               <button
                 type="button"
                 onClick={next}
-                className="btn-reset rounded-full border border-brass/40 px-4 py-2 text-sm text-cream transition hover:bg-brass/10"
+                className="btn-reset rounded-sm border border-brass/40 px-4 py-2 text-sm text-cream transition hover:bg-brass/10"
               >
                 Next
                 <ChevronRight className="h-4 w-4" aria-hidden="true" />

@@ -77,7 +77,7 @@ export default function AboutPage() {
               ].map((v) => (
                 <div
                   key={v.label}
-                  className="flex items-center gap-2.5 rounded-2xl border border-walnut/20 bg-cream-dark/40 px-4 py-3"
+                  className="flex items-center gap-2.5 rounded-sm border border-walnut/20 bg-cream-dark/40 px-4 py-3"
                 >
                   <v.icon className="h-5 w-5 text-burgundy" aria-hidden="true" />
                   <span className="text-sm font-medium text-espresso">

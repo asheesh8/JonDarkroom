@@ -18,7 +18,7 @@ export function BlogCard({ post }: { post: Post }) {
       </Link>
       <div className="flex flex-1 flex-col p-5">
         <div className="flex items-center gap-3 text-xs">
-          <span className="rounded-full bg-burgundy/10 px-2.5 py-1 font-semibold uppercase tracking-wide text-burgundy">
+          <span className="rounded-sm bg-burgundy/10 px-2.5 py-1 font-semibold uppercase tracking-wide text-burgundy">
             {post.category}
           </span>
           <span className="text-walnut/70">{post.readingTime}</span>

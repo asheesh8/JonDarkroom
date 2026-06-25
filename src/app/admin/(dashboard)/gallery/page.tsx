@@ -34,7 +34,7 @@ export default function AdminGalleryPage() {
       />
       <MockNotice />
 
-      <div className="mb-6 inline-flex rounded-2xl border border-brass/25 bg-espresso/50 p-1">
+      <div className="mb-6 inline-flex rounded-sm border border-brass/25 bg-espresso/50 p-1">
         {(["inventory", "gallery"] as Tab[]).map((t) => (
           <button
             key={t}
@@ -293,7 +293,7 @@ function PreviewCard({
     sold: "bg-charcoal/80 text-cream/70 border-cream/20",
   };
   return (
-    <div className="overflow-hidden rounded-2xl border border-brass/30 bg-[#241810] shadow-counter">
+    <div className="overflow-hidden rounded-sm border border-brass/30 bg-[#241810] shadow-counter">
       <div
         aria-hidden="true"
         className="h-2 w-full bg-brass"
@@ -316,7 +316,7 @@ function PreviewCard({
         >
           {statusLabels[item.status]}
         </span>
-        <span className="absolute bottom-3 right-3 rounded-full border border-brass-dark bg-brass-light px-2.5 py-1 font-serif text-sm font-semibold text-espresso">
+        <span className="absolute bottom-3 right-3 rounded-sm border border-brass-dark bg-brass-light px-2.5 py-1 font-serif text-sm font-semibold text-espresso">
           {formatPrice(item.price || 0)}
         </span>
       </div>

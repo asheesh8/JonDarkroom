@@ -95,7 +95,7 @@
 
   /* torn / deckled paper card */
   .card-paper {
-    @apply rounded-3xl text-charcoal;
+    @apply rounded-sm text-charcoal;
     background-color: #f4e9d8;
     background-image:
       radial-gradient(rgba(92, 64, 51, 0.05) 1px, transparent 1px),
@@ -129,7 +129,7 @@
 
   /* --- WOOD PLAQUE: engraved brass-rimmed plaque --- */
   .plaque {
-    @apply rounded-[1.75rem];
+    @apply rounded-md;
     background-image:
       repeating-linear-gradient(
         92deg,

@@ -61,13 +61,13 @@ export function ShopBrowser() {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search the whole shop — “AE-1”, “50mm”, “tripod”…"
-          className="w-full rounded-full border border-brass/30 bg-[#241810]/70 py-3.5 pl-12 pr-12 text-cream placeholder:text-cream/35 focus:border-brass focus:outline-none focus:ring-1 focus:ring-brass"
+          className="w-full rounded-sm border border-brass/30 bg-[#241810]/70 py-3.5 pl-12 pr-12 text-cream placeholder:text-cream/35 focus:border-brass focus:outline-none focus:ring-1 focus:ring-brass"
         />
         {query && (
           <button
             onClick={() => setQuery("")}
             aria-label="Clear search"
-            className="absolute right-3 top-1/2 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-full text-cream/60 hover:bg-white/10 hover:text-cream"
+            className="absolute right-3 top-1/2 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-sm text-cream/60 hover:bg-white/10 hover:text-cream"
           >
             <X className="h-4 w-4" />
           </button>
@@ -88,7 +88,7 @@ export function ShopBrowser() {
                     setCategory(ALL);
                   }}
                   className={cn(
-                    "group rounded-full border px-5 py-2.5 text-sm font-medium transition-all",
+                    "group rounded-sm border px-5 py-2.5 text-sm font-medium transition-all",
                     on
                       ? "border-brass bg-gradient-to-b from-brass-light to-brass-dark text-espresso shadow-brass"
                       : "border-brass/30 text-cream/75 hover:border-brass/60 hover:text-cream",
@@ -97,7 +97,7 @@ export function ShopBrowser() {
                   {d.name}
                   <span
                     className={cn(
-                      "ml-2 rounded-full px-1.5 py-0.5 text-[0.65rem]",
+                      "ml-2 rounded-sm px-1.5 py-0.5 text-[0.65rem]",
                       on ? "bg-espresso/25 text-espresso" : "bg-white/10 text-cream/60",
                     )}
                   >
@@ -122,7 +122,7 @@ export function ShopBrowser() {
                   key={c}
                   onClick={() => setCategory(c)}
                   className={cn(
-                    "rounded-full border px-3.5 py-1.5 text-xs transition",
+                    "rounded-sm border px-3.5 py-1.5 text-xs transition",
                     on
                       ? "border-burgundy bg-burgundy text-cream"
                       : "border-cream/20 text-cream/60 hover:border-brass/50 hover:text-cream",
@@ -167,17 +167,17 @@ function ShopCard({ item, onOpen }: { item: ShopItem; onOpen: () => void }) {
   return (
     <button
       onClick={onOpen}
-      className="group relative flex flex-col overflow-hidden rounded-[1.75rem] border border-brass/25 bg-[#241810] text-left shadow-counter transition-all duration-300 hover:-translate-y-1.5 hover:border-brass/70"
+      className="group relative flex flex-col overflow-hidden rounded-sm border border-brass/25 bg-[#241810] text-left shadow-counter transition-all duration-300 hover:-translate-y-1.5 hover:border-brass/70"
     >
       <div className="relative aspect-square overflow-hidden bg-[#1d130d]">
         <ShopImage src={item.image} alt={item.name} variant="camera" />
         {typeof item.price === "number" && item.price > 0 && (
-          <span className="absolute right-3 top-3 rounded-full border border-brass-dark bg-gradient-to-b from-brass-light to-brass-dark px-3 py-1 font-serif text-sm font-semibold text-espresso shadow">
+          <span className="absolute right-3 top-3 rounded-sm border border-brass-dark bg-gradient-to-b from-brass-light to-brass-dark px-3 py-1 font-serif text-sm font-semibold text-espresso shadow">
             {formatPrice(item.price)}
           </span>
         )}
         {item.condition != null && (
-          <span className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-full bg-espresso/85 px-2.5 py-1 text-[0.6rem] font-semibold uppercase tracking-wide text-brass-light">
+          <span className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-sm bg-espresso/85 px-2.5 py-1 text-[0.6rem] font-semibold uppercase tracking-wide text-brass-light">
             <ShieldCheck className="h-3 w-3" aria-hidden="true" />
             {item.condition}/10
           </span>
@@ -222,7 +222,7 @@ function ShopDetail({ item, onClose }: { item: ShopItem; onClose: () => void }) 
       onClick={onClose}
     >
       <div
-        className="relative my-8 w-full max-w-3xl overflow-hidden rounded-[2rem] border border-brass/40 bg-[#241810] shadow-counter"
+        className="relative my-8 w-full max-w-3xl overflow-hidden rounded-sm border border-brass/40 bg-[#241810] shadow-counter"
         onClick={(e) => e.stopPropagation()}
       >
         <button
@@ -258,7 +258,7 @@ function ShopDetail({ item, onClose }: { item: ShopItem; onClose: () => void }) 
                 </span>
               )}
               {item.condition != null && (
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-[#3a5a40]/40 px-3 py-1 text-xs font-medium text-cream">
+                <span className="inline-flex items-center gap-1.5 rounded-sm bg-[#3a5a40]/40 px-3 py-1 text-xs font-medium text-cream">
                   <ShieldCheck className="h-3.5 w-3.5" aria-hidden="true" />
                   Condition {item.condition}/10
                 </span>
@@ -277,12 +277,12 @@ function ShopDetail({ item, onClose }: { item: ShopItem; onClose: () => void }) 
               </p>
             )}
 
-            <div className="mt-5 inline-flex items-center gap-2 rounded-full border border-brass/30 bg-espresso/50 px-3.5 py-1.5 text-sm text-cream">
+            <div className="mt-5 inline-flex items-center gap-2 rounded-sm border border-brass/30 bg-espresso/50 px-3.5 py-1.5 text-sm text-cream">
               <Hash className="h-4 w-4 text-brass" aria-hidden="true" />
               Item <span className="font-semibold text-brass-light">{itemNo}</span>
             </div>
 
-            <div className="mt-6 rounded-2xl border border-brass/20 bg-espresso/40 p-4">
+            <div className="mt-6 rounded-sm border border-brass/20 bg-espresso/40 p-4">
               <p className="text-xs font-semibold uppercase tracking-widest text-brass">
                 How to buy
               </p>
@@ -294,14 +294,14 @@ function ShopDetail({ item, onClose }: { item: ShopItem; onClose: () => void }) 
               <div className="mt-3 flex flex-wrap gap-2.5">
                 <a
                   href={`tel:${businessInfo.phoneHref}`}
-                  className="btn-reset rounded-full bg-gradient-to-b from-brass-light to-brass-dark px-4 py-2 text-sm font-medium text-espresso shadow-brass"
+                  className="btn-reset rounded-sm bg-gradient-to-b from-brass-light to-brass-dark px-4 py-2 text-sm font-medium text-espresso shadow-brass"
                 >
                   <Phone className="h-4 w-4" aria-hidden="true" />
                   Call to reserve
                 </a>
                 <a
                   href="/contact"
-                  className="btn-reset rounded-full border border-brass/40 px-4 py-2 text-sm text-cream hover:bg-brass/10"
+                  className="btn-reset rounded-sm border border-brass/40 px-4 py-2 text-sm text-cream hover:bg-brass/10"
                 >
                   <MapPin className="h-4 w-4" aria-hidden="true" />
                   Visit the shop
@@ -327,12 +327,12 @@ export function ShopHowItWorks() {
       {steps.map((s, i) => (
         <div
           key={s.t}
-          className="relative rounded-2xl border border-brass/20 bg-[#241810]/60 p-5"
+          className="relative rounded-sm border border-brass/20 bg-[#241810]/60 p-5"
         >
           <span className="absolute right-4 top-3 font-serif text-3xl text-brass/25">
             {i + 1}
           </span>
-          <span className="grid h-11 w-11 place-items-center rounded-2xl border border-brass/40 bg-espresso text-brass">
+          <span className="grid h-11 w-11 place-items-center rounded-sm border border-brass/40 bg-espresso text-brass">
             <s.icon className="h-5 w-5" aria-hidden="true" />
           </span>
           <h3 className="mt-3 font-serif text-lg text-cream">{s.t}</h3>

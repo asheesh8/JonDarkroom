@@ -61,7 +61,7 @@ function InventoryCard({
     <button
       type="button"
       onClick={onOpen}
-      className="group relative flex flex-col overflow-hidden rounded-[1.75rem] border border-brass/30 bg-[#241810] text-left shadow-counter transition-all duration-300 hover:-translate-y-1.5 hover:border-brass/70"
+      className="group relative flex flex-col overflow-hidden rounded-sm border border-brass/30 bg-[#241810] text-left shadow-counter transition-all duration-300 hover:-translate-y-1.5 hover:border-brass/70"
     >
       {/* notched ticket edge along the top */}
       <NotchStrip />
@@ -129,7 +129,7 @@ function InventoryDetail({
       onClick={onClose}
     >
       <div
-        className="relative my-8 w-full max-w-3xl overflow-hidden rounded-[2rem] border border-brass/40 bg-[#241810] shadow-counter"
+        className="relative my-8 w-full max-w-3xl overflow-hidden rounded-sm border border-brass/40 bg-[#241810] shadow-counter"
         onClick={(e) => e.stopPropagation()}
       >
         <NotchStrip />
@@ -170,7 +170,7 @@ function InventoryDetail({
               {item.description}
             </p>
 
-            <dl className="mt-5 space-y-0 overflow-hidden rounded-2xl border border-brass/20">
+            <dl className="mt-5 space-y-0 overflow-hidden rounded-sm border border-brass/20">
               {item.specs.map((s, i) => (
                 <div
                   key={s.label}

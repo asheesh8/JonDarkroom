@@ -31,7 +31,7 @@ export function MemoryDeskObject({ object }: { object: DeskObject }) {
       href={object.href}
       style={{ rotate: `${object.tilt}deg` }}
       className={cn(
-        "group relative block rounded-3xl border border-brass/25 bg-[#231811]/70 p-4 text-center shadow-counter transition-all duration-300",
+        "group relative block rounded-sm border border-brass/25 bg-[#231811]/70 p-4 text-center shadow-counter transition-all duration-300",
         "hover:-translate-y-1.5 hover:rotate-0 hover:border-brass/70 hover:bg-[#2c2017]/80 focus-visible:-translate-y-1.5 focus-visible:rotate-0",
       )}
     >

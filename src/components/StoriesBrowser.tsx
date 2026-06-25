@@ -23,7 +23,7 @@ export function StoriesBrowser({ posts }: { posts: Post[] }) {
             type="button"
             onClick={() => setActive(cat)}
             className={cn(
-              "rounded-full border px-4 py-1.5 text-sm transition",
+              "rounded-sm border px-4 py-1.5 text-sm transition",
               active === cat
                 ? "border-burgundy bg-burgundy text-cream"
                 : "border-walnut/30 text-walnut hover:border-burgundy hover:text-burgundy",

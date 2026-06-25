@@ -24,7 +24,7 @@ export function PageHero({
   return (
     <section className="surface-wood relative overflow-hidden border-b border-brass/25">
       <div
-        className="pointer-events-none absolute -right-20 -top-24 h-80 w-80 rounded-full bg-brass/10 blur-3xl"
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-brass/25"
         aria-hidden="true"
       />
       <div className="shell relative py-16 sm:py-20">
