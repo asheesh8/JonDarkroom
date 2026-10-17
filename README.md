@@ -9,6 +9,19 @@ designed to feel like walking into Jon's actual store.
 
 ---
 
+**Live:** https://jon-darkroom.vercel.app · **Stack:** Next.js (App Router) + TypeScript + Tailwind CSS, content in `src/data/`, admin behind an HMAC-signed session cookie checked in `src/middleware.ts`.
+
+### Environment variables
+
+Names only — set values in `.env.local` (git-ignored) or the Vercel project.
+
+| Variable | Purpose |
+|---|---|
+| `ADMIN_USERNAME`, `ADMIN_PASSWORD` | Admin sign-in. Use a strong, unique password — not the example value. |
+| `ADMIN_SESSION_SECRET` | Long random string that signs the session cookie |
+
+**Deploy:** Vercel, stock Next.js preset; pushes to `main` go to production.
+
 ## Quick start
 
 > **Requirements:** [Node.js](https://nodejs.org) 18.17+ (or 20+) and npm.
